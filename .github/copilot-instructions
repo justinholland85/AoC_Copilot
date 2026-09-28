@@ -1,0 +1,19 @@
+# AoC Copilot Instructions
+
+## General
+
+These are personal Advent of Code solutions.
+
+Solutions should initially be developed in R.
+
+The primary purpose is to produce code that is understandable
+and straightforward to run interactively in Positron.
+
+Do not add unnecessary command-line infrastructure or
+general-purpose application structure unless requested.
+
+When solving a problem:
+1. Read the supplied problem instructions.
+2. Inspect the example input and expected example output.
+3. Develop and test the solution using the example.
+4. Apply the solution to the actual input.

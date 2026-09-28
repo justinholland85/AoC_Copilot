@@ -4,16 +4,29 @@
 
 These are personal Advent of Code solutions.
 
+The existing justinholland85/AoC repository is a read-only source of previous AoC problems and solutions. When asked to work on a problem that is not already in the current workspace, use the GitHub MCP server to retrieve the relevant problem files. When working on an AoC problem retrieved from the existing AoC repository, make local copies of the two input files and the problem instructions in the corresponding problem directory within this repository, preserving the existing directory structure and filenames. Do not modify the files in the original AoC repository. When retrieving an AoC problem from the existing AoC repository, do not retrieve, inspect, or use any existing solution files for that problem.
+
+
 Solutions should initially be developed in R.
+- Each AoC solution should be contained in a single R script.
+- Clearly separate the solutions for Part 1 and Part 2 within the script.
+- Create the solution script in the same directory as the problem instructions and input files.
+- Name the script `AoC_<year>_<day>_Copilot.R`, for example `AoC_2022_03_Copilot.R`.
+- The solution must be designed to be opened and run interactively in Positron.
+- I will commonly run individual lines or sections of the script rather than running the entire script as a command-line program.
+- Do not use `commandArgs()`, `sys.frames()`, `--file=`, or other mechanisms to determine the script's location.
+- Do not require the script to be run with `Rscript`.
+- Use a hard-coded project root path when necessary to locate input files.
+- The project root is:
+  `C:/Users/justi/OneDrive/Documents/GitHub/AoC_Copilot/`
+- Construct input paths from this project root and the relevant AoC subdirectory.
 
-The primary purpose is to produce code that is understandable
-and straightforward to run interactively in Positron.
-
-Do not add unnecessary command-line infrastructure or
-general-purpose application structure unless requested.
+The primary purpose is to produce code that is understandable and straightforward to run interactively in Positron.
 
 When solving a problem:
 1. Read the supplied problem instructions.
 2. Inspect the example input and expected example output.
 3. Develop and test the solution using the example.
 4. Apply the solution to the actual input.
+
+

@@ -42,3 +42,14 @@ Solve an Advent of Code problem in the current `AoC_Copilot` repository using Py
 16. Verify that the solution produces a plausible result for the actual input.
 
 17. Leave the original AoC repository unchanged.
+
+## Python environment
+
+- Solutions should be designed to be opened and run interactively in VS Code or Positron.
+- Do not use command-line argument handling unless specifically required by the puzzle.
+- Do not require the script to be run through a command-line wrapper.
+- Do not use mechanisms to determine the script's location.
+- Use straightforward file paths that work when the script is run interactively.
+- Prefer standard Python libraries unless a third-party package provides a clear and useful benefit.
+- Keep the solution readable and straightforward.
+- Do not optimise prematurely; first produce a correct and understandable solution.

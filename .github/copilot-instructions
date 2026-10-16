@@ -42,3 +42,13 @@ Solve an Advent of Code problem in the current `AoC_Copilot` repository using Py
 16. Verify that the solution produces a plausible result for the actual input.
 
 17. Leave the original AoC repository unchanged.
+
+### Personal R library
+
+My personal R function library is maintained in the GitHub repository `https://github.com/justinholland85/RLibrary`.
+
+When a task requires inspecting my library, use the configured GitHub MCP tools to browse this repository and read the relevant function definitions and supporting files. Inspect the repository structure to locate functions rather than assuming a particular directory layout.
+
+**This repository is read-only for our purposes.** You may inspect and retrieve its contents, but must never create, modify, delete or commit any files in this repository.
+
+Do not assume that the RLibrary repository is part of the local Advent of Code repository or that its files are available locally.

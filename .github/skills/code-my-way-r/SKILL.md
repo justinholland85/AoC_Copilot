@@ -165,6 +165,19 @@ Use the reference documents as evidence, solve the problem independently, select
 
 Follow Justin's established AoC R script structure. The structure and order of the major sections are requirements, not suggestions.
 
+### Avoid unnecessary defensive programming and test scaffolding
+
+The purpose is to produce an Advent of Code solution in Justin's established R style, not to build production software or a reusable package.
+
+- **Do not add input-validation checks, custom error messages, or defensive programming by default.** AoC puzzle inputs can generally be assumed to follow the stated specification.
+- **Do not add `stopifnot()`, assertion blocks, or automated test scaffolding by default.** Justin's normal workflow is interactive: run the function on the example and real input, inspect the results, and investigate discrepancies when they arise.
+- Do not create intermediate answer variables merely to label or test outputs when a direct function call is sufficient.
+- Prefer the straightforward code patterns established in Justin's existing solutions and personal library.
+- Add validation, error handling, or tests only when explicitly requested or when there is a concrete, task-specific reason they materially improve the solution. If such a reason exists, keep the addition proportionate and explain it briefly.
+- Do not confuse code that could handle arbitrary malformed inputs with code that appropriately solves the stated puzzle.
+
+The default should be **solve the problem simply, in Justin's style, and let the interactive workflow do its job**.
+
 ### 1. Header and setup
 
 Begin with the established decorative header, including the AoC problem identifier.

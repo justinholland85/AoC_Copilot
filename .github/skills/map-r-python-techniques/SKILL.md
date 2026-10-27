@@ -1,19 +1,23 @@
 ---
 name: map-r-python-techniques
-description: Analyse all locally available paired Advent of Code R and Python solutions to build and maintain a cumulative reference mapping R techniques to Python, NumPy and pandas alternatives.
+description: Build and maintain a cumulative, example-driven reference mapping the R expressions and coding patterns I actually use to copyable Python, NumPy and pandas equivalents.
 ---
 
 # Map R–Python Techniques
 
 ## Objective
 
-Build and maintain a cumulative, practical reference for implementing programming techniques in Python based on my own Advent of Code solutions.
+Build and maintain a cumulative, practical reference that helps me translate my existing R programming knowledge into Python.
 
 My R solutions reflect my established programming style. My Python solutions are translations of those solutions, developed with AI assistance as I learn Python.
 
-The goal is to understand how techniques I already use in R can be implemented in Python, including alternative approaches using NumPy and pandas.
+**The primary goal is to help me recognise an R expression I already use and find Python code that I can copy, paste and adapt.**
 
-Focus on conceptual and methodological equivalence, not merely syntax translation. Explain the underlying ideas, important behavioural differences, and practical trade-offs.
+The reference must therefore be example-driven, not merely descriptive. Actual code from my solutions is the starting point for each entry. Explanations provide context for understanding and adapting that code.
+
+For example, if I frequently use `strsplit()` in R, I should be able to find `strsplit()` as a recognisable entry, see how I actually use it, and find the corresponding Python expression. It must not disappear into a general discussion of string manipulation.
+
+The reference should also explain important differences between R and Python, NumPy and pandas, but these explanations support the practical code examples rather than replace them.
 
 ## Scope and constraints
 
@@ -21,185 +25,283 @@ Focus on conceptual and methodological equivalence, not merely syntax translatio
 
 Use **local project files only**.
 
-- Do not access GitHub or retrieve material from the remote repository.
+- Do not access GitHub or retrieve material from remote repositories.
 - Do not use GitHub MCP or other tools to retrieve remote files.
-- Do not retrieve puzzle descriptions, inputs, or solutions from the internet.
-- Do not assume access to any material that is not present locally.
+- Do not retrieve puzzle descriptions, inputs or solutions from the internet.
+- Do not assume access to material that is not present locally.
 - Do not modify the original R or Python solution files.
 
-The paired solution files are the authoritative source for identifying the techniques used in my implementations.
+The paired solution files are the authoritative source for identifying the techniques and coding patterns I use.
 
-You may draw on your knowledge of R, Python, NumPy and pandas to explain the techniques and provide alternatives. Clearly distinguish techniques demonstrated in my code from additional illustrative alternatives.
+You may use your knowledge of R, Python, NumPy and pandas to explain behaviour and provide alternatives. Clearly distinguish actual implementations from additional illustrative alternatives.
 
 ### File naming convention
 
-Solution files follow this naming convention:
+Solution files follow this convention, including their respective file extensions:
 
 - `AoC_<Year>_<Day>_Code_R`
 - `AoC_<Year>_<Day>_Code_Py`
 
-The actual filenames include their respective file extensions.
-
-Use this convention to identify matching R and Python solutions. Do not impose alternative naming conventions or assume that other files are part of the analysis.
+Use these patterns to identify matching solutions. Do not impose alternative naming conventions.
 
 ### Coverage
 
-Analyse **every available R/Python pair** in the local project for which both files exist.
+Analyse every available R/Python pair in the local project for which both files exist.
 
-Do not restrict the analysis to a single year or day unless explicitly instructed to do so.
-
-If one member of a pair is missing, exclude that incomplete pair from the technique analysis and report it separately. Do not invent or reconstruct missing solution code.
+- Do not restrict the analysis to a particular year or day unless explicitly instructed.
+- If one member of a pair is missing, exclude that incomplete pair from the technique analysis and report it separately.
+- Do not invent or reconstruct missing solution code.
 
 ## Procedure
 
 ### 1. Discover the available solutions
 
-Scan the local project for files matching the naming convention.
+Scan the local project using the established project instructions.
 
-- Identify the year and day associated with each file.
-- Match the R and Python files for the same year and day.
-- Identify complete pairs and incomplete pairs.
-- Record the actual filenames of all discovered files.
+- Identify all R and Python solution files matching the naming convention.
+- Match each R file to its corresponding Python file.
+- Record complete and incomplete pairs.
+- Record the exact filenames of the files discovered.
 
-Use the project's existing instructions to determine its root directory. Do not search remote repositories.
+### 2. Extract recognisable R expressions and patterns
 
-### 2. Analyse the R solutions
+Read the complete source code of every R solution in each complete pair.
 
-For every complete pair, examine the R solution to identify its important techniques, idioms and programming patterns.
+Identify the actual expressions, functions and coding patterns that are useful to recognise and reuse when programming in Python.
 
-Consider, where relevant:
+**Do not identify only broad conceptual techniques. Identify the concrete R syntax that implements them.**
 
-- Input parsing and string manipulation.
-- Vectorised operations and indexing.
-- Tables, arrays, matrices and data frames.
-- Counting, grouping and frequency calculations.
-- Matching, lookup operations and joins.
-- Sorting, searching, filtering and deduplication.
-- Set operations and membership tests.
-- Logical conditions and missing values.
-- Iteration, recursion and state updates.
-- Numerical calculations and transformations.
-- Algorithms, data structures and computational complexity.
+For example, consider each of these separately when they occur in the source material:
 
-This list is illustrative, not exhaustive. Record techniques that are genuinely useful for future programming rather than cataloguing every trivial expression.
+- `strsplit()`
+- `paste()` and `paste0()`
+- `do.call()`
+- `unlist()`
+- `as.numeric()`
+- `as.character()`
+- `data.frame()`
+- `table()`
+- `match()`
+- `unique()`
+- `sort()`
+- `order()`
+- `which()`
+- `seq()` and `seq_len()`
+- `rbind()` and `cbind()`
+- `matrix()`
+- `apply()` and related functions
+- Logical indexing and vectorised conditions
+- Arithmetic and logical operations on vectors
+- The use of `NA` and handling missing values
+- Loops, functions, indexing and state updates
 
-For each technique, distinguish between:
-- The underlying problem or algorithm.
-- The R operation or idiom used to implement it.
-- Any assumptions or language-specific behaviour that matter for correctness.
+This list is illustrative, not exhaustive. The presence of a function in this list does not establish that I use it; verify every entry against the actual source code.
 
-### 3. Analyse the Python translations
+Include combinations of operations when they form a useful reusable pattern. For example, splitting strings, converting the results to numeric values and assembling them into a matrix may warrant both individual entries and a combined example.
 
-For each corresponding Python solution, identify how the same problem and techniques are implemented.
+### 3. Build an entry for each useful mapping
 
-Recognise the use of:
-- Standard Python syntax, built-in functions and data structures.
-- NumPy arrays and vectorised operations.
-- pandas Series and DataFrames.
-- Other libraries where they are actually used.
+Each entry must be concrete enough that I can recognise the R code and use the Python equivalent with minimal adjustment.
 
-Determine whether the Python implementation preserves the original R approach, changes the method, or uses a substantially different algorithm.
+Use the following structure wherever applicable.
 
-Do not assume that the existing Python translation is necessarily the best or only way to implement the technique.
+#### A. Recognise it in R
 
-### 4. Build reusable technique mappings
+Show the exact R expression or a representative code block copied from one of my actual solutions.
 
-For each useful, reusable technique, document the following where applicable.
+For example, if the source contains:
 
-1. **Purpose** — the problem being solved.
-2. **R approach** — the relevant operation or idiom, with a reference to the solution where it appears.
-3. **Python with NumPy** — an equivalent implementation where appropriate.
-4. **Python with pandas** — an equivalent implementation where appropriate.
-5. **Standard Python alternative** — include when a built-in function, data structure or standard-library tool provides a useful alternative.
-6. **Important differences** — explain relevant differences in indexing, types, missing values, ordering, dimensions, broadcasting, mutation or other behaviour.
-7. **Practical guidance** — explain when each approach is useful and any meaningful trade-offs.
+```r
+DF <- data.frame(do.call(rbind, strsplit(Data, "  ")))
+DF <- lapply(DF, as.numeric)
+```
 
-Use small, runnable code examples where they aid understanding.
+show this actual pattern rather than replacing it with an abstract description such as “split strings and convert values to numbers”.
 
-Prefer examples taken from my actual solutions. Clearly label simplified examples and additional alternatives.
+Include the source reference: year, day and filename.
 
-Do not force every technique into NumPy, pandas and standard Python implementations. Include alternatives when they are useful, and explain when an alternative is unnatural or unnecessary.
+If the expression occurs in several solutions, prefer a representative example and list other relevant occurrences.
 
-Where two approaches appear superficially equivalent but can produce different results, explain the distinction explicitly.
+#### B. Copy and adapt it in Python
 
-### 5. Identify recurring patterns across solutions
+Show the corresponding Python expression or code block.
 
-Compare techniques across all complete pairs, including solutions from different years.
+Prioritise the implementation from my existing Python translation, provided it correctly implements the same operation or task.
 
-- Consolidate repeated techniques into a single reusable entry.
-- Record multiple implementations when they provide genuinely useful alternatives.
-- Identify patterns that recur across several puzzles.
-- Distinguish a new algorithmic idea from a different syntax for an existing idea.
-- Identify cases where the Python translation changes the original method.
-- Preserve references to the year and day for each relevant example.
+The Python example must be sufficiently complete to copy and adapt. Include the necessary variable definitions, conversions or imports when they are essential to understanding or running the example.
 
-Do not create a separate entry for every occurrence of the same technique. The purpose is to build a coherent reference, not a chronological catalogue of solutions.
+Use meaningful variable names and preserve the original data flow where practical.
 
-### 6. Maintain the cumulative cheat sheet
+If the existing Python translation uses a different method, explain the difference and show how the corresponding operation can be implemented.
+
+#### C. What changes?
+
+Explain only the differences that matter for using or adapting the code, such as:
+
+- R vectors versus Python lists or NumPy arrays.
+- R's one-based indexing versus Python's zero-based indexing.
+- How splitting functions return their results.
+- Data types and explicit conversions.
+- Array dimensions and shapes.
+- Missing values.
+- Indexing, matching and membership behaviour.
+- Mutation, copies and assignment.
+- Differences in ordering or duplicate handling.
+
+Avoid lengthy conceptual explanations where a short practical note is sufficient.
+
+#### D. Adaptation example
+
+Where useful, show a small variation of the actual pattern, demonstrating how to adjust it for a different input or task.
+
+Label this clearly as an adaptation rather than code copied from an existing solution.
+
+Do not create an adaptation example merely to fill a template. Prioritise patterns that are likely to be useful in future programming.
+
+#### E. Alternatives
+
+Include NumPy, pandas or standard Python alternatives when they are genuinely useful.
+
+Keep the main translation clearly identifiable. Do not overwhelm the entry with several competing solutions when one straightforward equivalent is sufficient.
+
+### 4. Prioritise actual code over general descriptions
+
+The reference is intended to be used while writing code, not just read as a tutorial.
+
+Apply these rules:
+
+- Put the recognisable R expression prominently in the entry title or opening.
+- Show actual R code before discussing its general concept.
+- Show the corresponding Python code immediately afterwards.
+- Prefer complete expressions and short, runnable blocks over isolated fragments.
+- Preserve enough of the surrounding code to make the example understandable.
+- Include the original variable names when they help me recognise the pattern.
+- Avoid replacing actual expressions with pseudocode or generic descriptions.
+- Do not omit a frequently used function merely because it appears as part of a larger expression.
+- Do not merge distinct functions into one broad entry if doing so makes them harder to find.
+- Do not create an entry for every trivial occurrence. Prioritise reusable operations and combinations that are likely to recur.
+
+**The reference should be searchable by the R function or expression I remember, as well as by the programming task I want to perform.**
+
+For example, a reader looking for `strsplit()` should find it directly without needing to guess that it is covered under “input parsing”.
+
+### 5. Distinguish actual translations from recommended alternatives
+
+The Python code in my existing solutions is valuable evidence of how I have translated my R code, but it is not automatically the best or only implementation.
+
+Clearly label examples as appropriate:
+
+- **Existing R code** — taken from my actual R solution.
+- **Existing Python translation** — taken from my actual Python solution.
+- **Recommended equivalent** — a suggested implementation where the existing translation is absent, unnecessarily complicated or not semantically equivalent.
+- **Alternative** — another useful implementation using NumPy, pandas or standard Python.
+- **Illustrative adaptation** — a modified example intended to demonstrate how to reuse the pattern.
+
+Never present generated or modified code as though it came from one of my files.
+
+If the Python translation uses a substantially different algorithm, explain that rather than implying a direct function-to-function translation.
+
+### 6. Check semantic equivalence
+
+For each mapping, verify that the R and Python examples perform the same task.
+
+Pay particular attention to differences that can silently change results, including:
+
+- String splitting and delimiters.
+- Scalar, vector and array behaviour.
+- Missing values and absent matches.
+- Type coercion.
+- Indexing and array dimensions.
+- Duplicate values and ordering.
+- Logical conditions and operator precedence.
+- Integer and floating-point behaviour.
+- Whether a function returns positions, values, counts or a transformed object.
+
+If the examples are not equivalent, explain the distinction and provide a corrected equivalent where possible.
+
+Do not claim equivalence simply because two expressions look similar.
+
+### 7. Identify recurring patterns across solutions
+
+Compare the complete pairs across years.
+
+- Consolidate repeated mappings into a single reusable entry.
+- Retain multiple actual implementations where they reveal useful alternatives.
+- List the source references for all relevant examples.
+- Distinguish a new technique from a different syntax for an existing technique.
+- Identify recurring R expressions that deserve their own searchable entries.
+- Identify where the Python translation changes the algorithm or combines several R operations into one Python operation.
+
+Do not organise the reference primarily as a chronological catalogue of puzzles.
+
+### 8. Maintain the cumulative cheat sheet
 
 Create or update the following document in the project root:
 
 `AoC_R_Python_Techniques.md`
 
-Organise the document primarily by technique or task, rather than by puzzle chronology.
+Organise the document by technique and recognisable R expression, with a structure that supports both browsing and searching.
 
-Suggested categories include:
+Suggested organisation:
 
-- Input parsing and strings
-- Vectors, arrays and indexing
-- Counting and frequency tables
-- Matching, lookup and joins
-- Sorting, filtering and unique values
-- Sets and membership
-- Matrices and multidimensional data
-- Iteration and state
-- Algorithms and problem-solving patterns
+1. Input parsing and string manipulation.
+2. Conversion and type handling.
+3. Vectors, arrays and indexing.
+4. Data frames and matrices.
+5. Counting and frequency tables.
+6. Matching, lookup and joins.
+7. Sorting, filtering and unique values.
+8. Sets and membership.
+9. Logical operations and missing values.
+10. Iteration, functions and state.
+11. Common combinations and reusable coding patterns.
+12. Algorithms and problem-solving patterns.
 
-Adapt these categories as the collection grows.
+Adapt the organisation as the collection grows. Include an index or cross-references where useful, particularly for individual R functions that also belong to a broader technique.
 
-For each technique, include the relevant R pattern, Python alternatives, important behavioural differences, practical guidance and references to the solutions that demonstrate it.
-
-Maintain a consistent structure, avoid unnecessary repetition, and use cross-references where appropriate.
+Within each category, make individual functions and expressions easy to locate.
 
 When updating the document:
 
 - Read and preserve existing useful content.
-- Integrate new findings into the existing structure.
-- Update entries when new solutions provide useful refinements or alternatives.
-- Consolidate duplicates rather than accumulating redundant explanations.
-- Keep the document focused on practical learning for an R programmer developing Python skills.
+- Integrate new findings into existing entries.
+- Add newly observed expressions and patterns.
+- Update mappings when additional examples reveal a better or more accurate translation.
+- Consolidate duplicates without losing useful examples or source references.
+- Preserve the distinction between actual code and illustrative alternatives.
+- Avoid turning the document into a lengthy theoretical explanation.
+- Keep the primary focus on helping an R programmer write Python.
 
-### 7. Maintain the source-file inventory
+### 9. Maintain the source-file inventory
 
 At the bottom of the cheat sheet, maintain a section titled **Source files analysed**.
 
-Include a table listing every complete R/Python pair included in the current analysis, with:
+Include a table listing every complete R/Python pair actually analysed, with:
 
 - Year.
 - Day.
 - Exact R filename.
 - Exact Python filename.
 
-Use the actual filenames, including extensions.
+Rebuild or reconcile this inventory against the current local files on every run. Do not list files as analysed merely because they exist.
 
-The inventory must reflect the files actually analysed in the current run. Rebuild or reconcile it against the current local files rather than blindly appending entries. Do not list a file as analysed merely because it exists.
+If incomplete pairs are found, include a separate **Incomplete solution pairs** subsection identifying the available file and its missing counterpart.
 
-If incomplete pairs are found, include a separate **Incomplete solution pairs** subsection that identifies the available file and the missing counterpart.
+Do not silently remove historical technique explanations merely because a source file is no longer present. The inventory records current coverage; preserve existing useful documentation unless it is demonstrably incorrect or removal is requested.
 
-Do not silently remove historical technique explanations merely because a source file is no longer present. The inventory records current coverage; existing useful documentation should be preserved unless it is demonstrably incorrect or the user requests its removal.
-
-### 8. Quality checks
+### 10. Quality checks
 
 Before finishing:
 
-- Verify that the technique mappings accurately reflect the source code.
-- Check that code examples use valid syntax and the appropriate library APIs.
-- Distinguish demonstrated implementations from additional alternatives.
-- Verify important claims about language and library behaviour where feasible.
-- Highlight semantic differences that could silently change results.
-- Ensure solution files have not been modified.
-- Ensure the source inventory matches the complete pairs actually analysed.
-- Preserve existing useful cheat-sheet content.
+- Confirm that the R examples genuinely occur in the cited source files.
+- Confirm that the Python examples genuinely occur in the cited files when labelled as existing translations.
+- Check that each important R expression has an identifiable Python equivalent or an explicit explanation of why no direct equivalent is appropriate.
+- Check that the examples are copyable and use correct syntax.
+- Verify important behavioural differences where feasible.
+- Ensure that additional alternatives are clearly labelled.
+- Ensure the inventory reflects the files actually analysed.
+- Preserve existing useful content.
+- Ensure the original solution files have not been modified.
 
 ## Final report
 
@@ -207,9 +309,15 @@ After updating the cheat sheet, report:
 
 - The number of complete R/Python pairs analysed.
 - The year/day range covered.
-- Any incomplete pairs and why they were excluded.
-- The main techniques added, refined or consolidated.
+- Any incomplete pairs.
+- The main expressions and mappings added or improved.
 - The location of the updated cheat sheet.
 - Any unresolved issues or limitations.
 
-Do not claim that a file was analysed or updated unless the operation was actually completed.
+Keep the report concise and factual.
+
+## Core principle
+
+**Show me what I actually write in R, then show me Python code I can copy and adjust.**
+
+Conceptual explanations, alternatives and performance considerations are valuable, but they must support that practical goal rather than replace it.
